@@ -16,7 +16,6 @@ class Solution(object):
 
         if self.is_a_solution(step, len(input)):
             output.append(''.join(answer))
-            return
         else:
             step += 1
             self.construct_candidates(step, input, candidates, digits_to_letters)
