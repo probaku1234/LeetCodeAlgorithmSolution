@@ -16,11 +16,7 @@ class Solution(object):
             else:
                 if len(stack) == 0:
                     return False
-                if p == ')':
-                    if stack[-1] == '(':
-                        stack.pop()
-                    else:
-                        return False
+                stack.pop()
 
         return len(stack) == 0
 
@@ -30,10 +26,10 @@ class Solution(object):
         else:
             return False
 
-    def process_solution(self, answer, step, output):
+    def process_solution(self, answer, output):
         output.append(''.join(answer))
 
-    def construct_candidates(self, step, input, candidates):
+    def construct_candidates(self, candidates):
         candidates[0] = '('
         candidates[1] = ')'
 
@@ -41,12 +37,12 @@ class Solution(object):
         candidates = ['a'] * 2
 
         if self.is_a_solution(answer, step, input):
-            self.process_solution(answer, step, output)
+            self.process_solution(answer, output)
         else:
             step += 1
             if step > input * 2:
                 return
-            self.construct_candidates(step, input, candidates)
+            self.construct_candidates(candidates)
             for i in range(len(candidates)):
                 answer[step-1] = candidates[i]
                 self.backtrack(answer, step, input, output)
