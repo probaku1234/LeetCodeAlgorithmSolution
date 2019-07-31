@@ -59,6 +59,3 @@ class Solution(object):
 
         return output
 
-
-s = Solution()
-print s.generateParenthesis(3)

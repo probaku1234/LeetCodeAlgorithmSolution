@@ -48,6 +48,3 @@ class Solution(object):
         self.backtracking(answer, 0, nums, output)
 
         return output
-
-s = Solution()
-print s.permute([1,2,3])
