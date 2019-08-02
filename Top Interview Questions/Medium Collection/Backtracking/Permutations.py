@@ -22,7 +22,7 @@ class Solution(object):
             if not value:
                 candidates.append(key)
 
-    def backtracking(self, answer, step, input, output):
+    def backtrack(self, answer, step, input, output):
         candidates = []
 
         if self.is_solution(step, len(input)):
@@ -32,7 +32,7 @@ class Solution(object):
             self.construct_candidates(answer, step, input, candidates)
             for i in range(len(candidates)):
                 answer[step-1] = candidates[i]
-                self.backtracking(answer, step, input, output)
+                self.backtrack(answer, step, input, output)
 
     def permute(self, nums):
         """
@@ -45,6 +45,10 @@ class Solution(object):
         answer = ['a'] * len(nums)
         output = []
 
-        self.backtracking(answer, 0, nums, output)
+        self.backtrack(answer, 0, nums, output)
 
         return output
+
+
+s = Solution()
+print s.permute([1,2,4])
