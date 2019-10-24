@@ -64,4 +64,4 @@ n1.left = n5
 n1.right = n6
 
 s = Solution()
-print s.zigzagLevelOrder(root)
+print(s.zigzagLevelOrder(root))

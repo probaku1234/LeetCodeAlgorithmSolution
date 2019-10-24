@@ -31,6 +31,17 @@ class Solution(object):
 
         return output
 
+    def helper(self, root, output):
+        if root:
+            self.helper(root.left, output)
+            output.append(root.val)
+            self.helper(root.right, output)
+
+    def recursive(self, root):
+        output = []
+        self.helper(root, output)
+        return output
+
 root = TreeNode(1)
 root.left = TreeNode(2)
 root.right = TreeNode(3)
@@ -38,4 +49,4 @@ root.left.left = TreeNode(4)
 root.left.right = TreeNode(5)
 
 s = Solution()
-print s.inorderTraversal(root)
+print(s.recursive(root))
