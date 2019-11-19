@@ -31,6 +31,30 @@ class Graph:
         return ans
 
 
+class DSU:
+    def __init__(self):
+        self.parents = list(range(1001))
+        self.rank = [0] * 1001
+
+    def find(self, x):
+        if self.parents[x] != x:
+            self.parents[x] = self.find(self.parents[x])
+        return self.parents[x]
+
+    def union(self, x, y):
+        xr, yr = self.find(x), self.find(y)
+        if xr == yr:
+            return False
+        elif self.rank[xr] < self.rank[yr]:
+            self.parents[xr] = yr
+        elif self.rank[xr] > self.rank[yr]:
+            self.parents[yr] = xr
+        else:
+            self.parents[yr] = xr
+            self.rank[xr] += 1
+        return True
+
+
 class Solution(object):
     def removeStones(self, stones):
         """
@@ -49,7 +73,5 @@ class Solution(object):
                     g.add_edge(j, i)
 
         return g.count_size_of_components()
-
-
 
 
