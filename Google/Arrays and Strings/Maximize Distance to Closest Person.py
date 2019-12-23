@@ -1,6 +1,7 @@
 """
 URL : https://leetcode.com/explore/interview/card/google/59/array-and-strings/3058/
 """
+import itertools
 
 
 class Solution(object):
@@ -37,6 +38,16 @@ class Solution(object):
 
         return max_distance
 
-print(Solution().maxDistToClosest([1,1,0,0,0,1,0]))
+    def maxDistToClosest2(self, seats):
+        ans = 0
+        for seat, group in itertools.groupby(seats):
+            if not seat:
+                pika = list(group)
+                K = len(list(group))
+                ans = max(ans, (K + 1) / 2)
+
+        return max(ans, seats.index(1), seats[::-1].index(1))
+
+print(Solution().maxDistToClosest2([1,1,0,0,0,1,0]))
 print(Solution().maxDistToClosest([1,0,0,0]))
 print(Solution().maxDistToClosest([0,0,0,1]))
