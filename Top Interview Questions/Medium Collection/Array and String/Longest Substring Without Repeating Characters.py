@@ -36,6 +36,31 @@ class Solution:
 
         return result
 
+    def lengthOfLongestSubstring2(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        if s is None or s == "":
+            return 0
+
+        n = len(s)
+        alpha_set = set()
+        result = 0
+        i = 0
+        j = 0
+
+        while i < n and j < n:
+            if s[j] not in alpha_set:
+                alpha_set.add(s[j])
+                j += 1
+                result = max(result, j - i)
+            else:
+                alpha_set.remove(s[i])
+                i += 1
+
+        return result
+
 
 s = Solution()
 print(s.lengthOfLongestSubstring("pwwkew"))
