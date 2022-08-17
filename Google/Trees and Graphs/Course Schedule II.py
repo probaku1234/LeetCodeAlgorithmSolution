@@ -13,6 +13,16 @@ class Graph:
     def add_edges(self, v, w):
         self.graph[v].append(w)
 
+#     Algorithm
+#
+#     Initialize a queue, Q to keep a track of all the nodes in the graph with 0 in-degree.
+#     Iterate over all the edges in the input and create an adjacency list and also a map of node v/s in-degree.
+#     Add all the nodes with 0 in-degree to Q.
+#     The following steps are to be done until the Q becomes empty.
+#     Pop a node from the Q. Let's call this node, N.
+#     For all the neighbors of this node, N, reduce their in-degree by 1. If any of the nodes' in-degree reaches 0, add it to the Q.
+#     Add the node N to the list maintaining topologically sorted order.
+#     Continue from step 4.1.
     def topological_order_non_recursive(self):
         queue = deque([])
         in_degree = [0] * self.n
