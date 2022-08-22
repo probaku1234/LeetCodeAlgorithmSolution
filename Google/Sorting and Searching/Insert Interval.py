@@ -1,5 +1,11 @@
 """
 URL : https://leetcode.com/explore/interview/card/google/63/sorting-and-searching-4/445/
+
+Greedy algorithms
+
+Add to the output all the intervals starting before newInterval.
+Add to the output newInterval. Merge it with the last added interval if newInterval starts before the last added interval.
+Add the next intervals one by one. Merge with the last added interval if the current interval starts before the last added interval.
 """
 
 
